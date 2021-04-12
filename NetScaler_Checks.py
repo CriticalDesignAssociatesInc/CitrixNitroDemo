@@ -4,6 +4,7 @@ import urllib3
 import csv
 import getpass
 import os
+import panda as pd
 
 #Get a list of LB vServers, Service Group Bindings, Server Group members, 
 #Service Group Member Ports, Service Group Monitors, Service Group Monitor HTTP Requests, LB vServer Status, Backend Server Status
@@ -145,3 +146,5 @@ with open('monitor_status.csv','w', newline='') as f:
             backend = 'N/A'
             writer.writerow([lbvs_name,svg_grpname,svrname,port,monname,httpreq,lbvs_stat,svrstate,backend])
 
+df = pd.read_csv('monitor_status.csv')
+prind(df)
