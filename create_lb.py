@@ -8,21 +8,21 @@ import getpass
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 #variables
-NITRO_SERVER= sys.args[0]
+NITRO_SERVER= sys.args[1]
 #NITRO_SERVER="192.168.99.19"
 #User input username
-NITRO_USER= sys.args[1]
+NITRO_USER= sys.args[2]
 #NITRO_USER="nsroot"
 #User input password
 try:
-    NITRO_PWD = sys.args[2]
+    NITRO_PWD = sys.args[3]
 except Exception as error:
     print('ERROR', error)
 #NITRO_PWD="nsroot"
-app_name = sys.args[3]
-app_port = sys.args[4]
-lb_serviceType = sys.args[5]
-lb_IPadd = sys.args[6]
+app_name = sys.args[4]
+app_port = sys.args[5]
+lb_serviceType = sys.args[6]
+lb_IPadd = sys.args[7]
 
 lb_name = "VS-LB-PRI-" + app_name + "-" + app_port
 svg_name = "SVG-PRI-" + app_name + "-" + app_port
@@ -119,15 +119,15 @@ def create_servers():
 if __name__=="__main__":
 
     create_lb()
-    svg_type = sys.args[7]
+    svg_type = sys.args[8]
     create_svg()
     
 #    while True:
 #        a = input("Add Backend Server? (y/n) ").lower()
 #        if a == "y":
-    server_name = sys.args[8]
-    server_ip = sys.args[9]
-    server_port = sys.args[10]
+    server_name = sys.args[9]
+    server_ip = sys.args[10]
+    server_port = sys.args[11]
     create_servers()
 #        elif a == "n":
 #            break
