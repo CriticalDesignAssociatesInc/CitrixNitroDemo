@@ -1,0 +1,15 @@
+vServer Name,ServiceGroup Name,Server Name,Port,Monitor Name,HTTP Request,LB VIP Status,Server Status,Backend Server State
+VS-LB-WEB01,SVG-WEB-01-HTTP,WEB01,80,http-posts,/posts/1,UP,UP,UP
+VS-LB-WEB01,SVG-WEB-01-HTTP,WEB02,80,http-posts,/posts/1,UP,UP,UP
+VS-LB-WEB01,SVG-WEB-01-HTTP,WEB03,80,http-posts,/posts/1,UP,UP,UP
+VS-LB-WEB02,SVG-WEB-02-HTTP,WEB01,80,http-comments,/comments/1,UP,UP,UP
+VS-LB-WEB02,SVG-WEB-02-HTTP,WEB02,80,http-comments,/comments/1,UP,UP,UP
+VS-LB-WEB02,SVG-WEB-02-HTTP,WEB04,80,http-comments,/comments/1,UP,DOWN,DOWN
+VS-LB-WEB-03,SVG-WEB-03-HTTP,WEB03,80,http-albums,/albums/1,UP,UP,UP
+VS-LB-WEB04,SVG-WEB-04-HTTP,WEB02,80,http-photos,/photos/1,UP,UP,UP
+VS-LB-WEB05,SVG-WEB-05-HTTP,WEB01,80,http-todos,/todos/1,UP,UP,UP
+VS-LB-WEB06,SVG-WEB-06-HTTP,WEB01,80,http-users,/users/1,UP,UP,UP
+VS-LB-WEB06,SVG-WEB-06-HTTP,WEB02,80,http-users,/users/1,UP,UP,UP
+LB-VS-TEST,SVG-TEST,WEB01,80,tcp,N/A,UP,UP,N/A
+VS-LB-PRI-WEBAPP-443,SVG-PRI-WEBAPP-443,WEB05,80,tcp,N/A,UP,UP,N/A
+VS-LB-PRI-DNS-53,SVG-PRI-DNS-53,DC01,53,tcp,N/A,UP,UP,N/A
