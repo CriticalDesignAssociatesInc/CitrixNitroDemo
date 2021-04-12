@@ -7,20 +7,20 @@ import getpass
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 #User input server IP Address
-NITRO_SERVER=input("NetScaler Server IP: ")
+NITRO_SERVER=sys.argv[1]
 
 #User input username
-NITRO_USER=input("NetScaler Username: ")
+NITRO_USER=sys.argv[2]
 
 #User input password
 try:
-    NITRO_PWD=getpass.getpass()
+    NITRO_PWD=sys.argv[3]
 except Exception as error:
     print ('ERROR',error)
 
-SERVER_IP=input("Server IP to be modified: ")
+SERVER_IP=sys.argv[4]
 
-SERVER_STATE=input("Enable or Disable: ")
+SERVER_STATE=sys.argv[5]
 
 headers={
 "X-NITRO-USER":NITRO_USER,
