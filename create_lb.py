@@ -39,7 +39,7 @@ headers = {
 def create_lb():
 
 
-    type(int(app_port))
+    #type(int(app_port))
 
 
     payload = {
