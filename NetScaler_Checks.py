@@ -4,7 +4,7 @@ import urllib3
 import csv
 import getpass
 import os
-import pandas as pd
+#import pandas as pd
 
 #Get a list of LB vServers, Service Group Bindings, Server Group members, 
 #Service Group Member Ports, Service Group Monitors, Service Group Monitor HTTP Requests, LB vServer Status, Backend Server Status
