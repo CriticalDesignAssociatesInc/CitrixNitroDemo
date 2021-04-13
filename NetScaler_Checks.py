@@ -146,5 +146,6 @@ with open('monitor_status.csv','w', newline='') as f:
             backend = 'N/A'
             writer.writerow([lbvs_name,svg_grpname,svrname,port,monname,httpreq,lbvs_stat,svrstate,backend])
 
+pd.set_option('display.max_columns', None)
 df = pd.read_csv('monitor_status.csv')
 print(df)
