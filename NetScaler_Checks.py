@@ -180,12 +180,12 @@ jira_data = json.loads(jira_text)
 for link in jira_data['_links'] :
     agent_link = jira_data['_links']['agent']
     print("Jira Service Management Ticket #: " + agent_link)
-    print(agent_link)
+    print(agent_link, '\n')
 
     #-------------------------------------------------------------------------
 tic = agent_link
 tic = tic.replace('https://criticaldesign.atlassian.net/browse/','')
-url = 'https://criticaldesign.atlassian.net/rest/api/3/issue/' + tic + '/attachments'
+url = 'https://criticaldesign.atlassian.net/rest/api/2/issue/' + tic + '/attachments'
 #url = 'https://criticaldesign.atlassian.net/rest/api/3/issue/10100/attachments'
 #url = 'https://criticaldesign.atlassian.net/rest/api/2/attachments/10100'
 t = requests.post(url,auth=(JIRA_USERNAME, JIRA_PASS), files=files, headers=aheaders)
