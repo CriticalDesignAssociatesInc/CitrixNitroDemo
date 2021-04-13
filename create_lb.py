@@ -12,8 +12,8 @@ import time
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 #variables
-JIRA_USERNAME=""
-JIRA_PASS=""
+JIRA_USERNAME=sys.argv[12]
+JIRA_PASS=sys.argv[13]
 NITRO_SERVER= sys.argv[1]
 #NITRO_SERVER="192.168.99.19"
 #User input username
@@ -190,7 +190,7 @@ headers = {"Content-Type": "application/json"}
 jirasm_payload = '{"serviceDeskId": "1", "requestTypeId": "16", "requestFieldValues": {"summary": "Developer Setup Load Balanced VIP via REST", "description": "STATUS"}}'
 MyString = "The following LB VIP was created: " + network_id+available_ip
 jirasm_payload = jirasm_payload.replace('STATUS', MyString)
-r = requests.post(jira_url, auth=(mycreds.username, mycreds.password), data=jirasm_payload, headers=headers)
+r = requests.post(jira_url, auth=(JIRA_USERNAME, JIRA_PASS), data=jirasm_payload, headers=headers)
 
 print(r.status_code)
 print(r.text)
