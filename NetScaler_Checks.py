@@ -160,7 +160,7 @@ print(df)
 #ticket = df.to_json(orient="split")
 #print(json.dumps(ticket))
 filename = 'monitor'
-mime_type = 'text/x-csv'
+mime_type = 'text/csv'
 files = [ ('monitor_status.csv', (filename, open('/var/jenkins_home/workspace/NS_Checks/CitrixNitroDemo/monitor_status.csv','rb'), mime_type)) ]
 
 #---------------------------------------------------------------------------
