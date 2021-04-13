@@ -176,7 +176,7 @@ r = requests.post(jira_url, auth=(JIRA_USERNAME, JIRA_PASS), data=jirasm_payload
 
 print(r.status_code)
 print(r.text)
-jira_text = r.content
+#jira_text = r.content
 jira_data = json.loads(jira_text)
 for link in jira_data['_links'] :
     agent_link = jira_data['_links']['agent']
@@ -184,9 +184,9 @@ for link in jira_data['_links'] :
     print(agent_link, '\n')
 
     #-------------------------------------------------------------------------
-tic = agent_link
-tic = tic.replace('https://criticaldesign.atlassian.net/browse/','')
-url = 'https://criticaldesign.atlassian.net/rest/api/3/issue/' + tic + '/attachments'
+tid = agent_link
+tid = tid.replace('https://criticaldesign.atlassian.net/browse/','')
+url = 'https://criticaldesign.atlassian.net/rest/api/3/issue/' + tid + '/attachments'
 #url = 'https://criticaldesign.atlassian.net/rest/api/3/issue/10100/attachments'
 #url = 'https://criticaldesign.atlassian.net/rest/api/2/attachments/10100'
 t = requests.post(url,auth=(JIRA_USERNAME, JIRA_PASS), files=files, headers=aheaders)
