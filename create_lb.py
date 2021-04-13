@@ -5,6 +5,9 @@ import getpass
 import random
 import string
 import time
+import random
+import string
+import time
 #import mycreds
 
 
@@ -70,8 +73,32 @@ available_ip = str(available_ip[0])
 print("First available IP: ", network_id+available_ip)
 
 lb_IPadd = network_id+available_ip
-lb_name = "VS-LB-PRI-" + app_name + "-" + app_port
-svg_name = "SVG-PRI-" + app_name + "-" + app_port
+#lb_name = "VS-LB-PRI-" + app_name + "-" + app_port
+#svg_name = "SVG-PRI-" + app_name + "-" + app_port
+
+#---------------------------------------------------------------
+def set_random_svg(length):
+    svc_characters = string.digits
+    svc_name = ''.join(random.choice(svc_characters) for p in range(length))
+    svc_name = 'svg-' + svc_name
+    #print(time.time())
+    print(svc_name)
+    return svc_name
+
+#set_random_svg(5)
+
+def set_random_lbvip(length):
+    lbvip_characters = string.digits
+    lbvip_name = ''.join(random.choice(lbvip_characters) for p in range(length))
+    lbvip_name = 'lbvip-' + lbvip_name
+    print(lbvip_name)
+    return lbvip_name
+
+#set_random_lbvip(5)
+#---------------------------------------------------------------
+
+lb_name = set_random_lbvip(5)
+svg_name = set_random_svg(5)
 print(lb_IPadd)
 print(lb_name)
 print(svg_name)
@@ -197,3 +224,6 @@ print(r.text)
 
 
 #---------------------------------------------------------------
+
+
+
