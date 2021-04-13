@@ -12,8 +12,8 @@ import time
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 #variables
-JIRA_USERNAME=sys.argv[12]
-JIRA_PASS=sys.argv[13]
+JIRA_USERNAME=sys.argv[11]
+JIRA_PASS=sys.argv[12]
 NITRO_SERVER= sys.argv[1]
 #NITRO_SERVER="192.168.99.19"
 #User input username
@@ -160,15 +160,15 @@ def create_servers():
 if __name__=="__main__":
 
     create_lb()
-    svg_type = sys.argv[8]
+    svg_type = sys.argv[7]
     create_svg()
     
 #    while True:
 #        a = input("Add Backend Server? (y/n) ").lower()
 #        if a == "y":
-    server_name = sys.argv[9]
-    server_ip = sys.argv[10]
-    server_port = sys.argv[11]
+    server_name = sys.argv[8]
+    server_ip = sys.argv[9]
+    server_port = sys.argv[10]
     create_servers()
 #        elif a == "n":
 #            break
