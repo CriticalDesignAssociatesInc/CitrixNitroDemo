@@ -40,4 +40,11 @@ jirasm_payload = jirasm_payload.replace('STATUS', MyString)
 r = requests.post(jira_url, auth=(mycreds.username, mycreds.password), data=jirasm_payload, headers=headers)
 
 print(r.status_code)
-print(r.text)
+#print(r.text)
+jira_text = r.content
+jira_data = json.loads(jira_text)
+for link in jira_data['_links'] :
+    agent_link = jira_data['_links']['agent']
+    print("Jira Service Management Ticket #: " + agent_link)
+    #print(agent_link)
+    exit()
