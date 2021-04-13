@@ -159,14 +159,15 @@ print(df)
 #--------------------------------------------------------------------------
 #ticket = df.to_json(orient="split")
 #print(json.dumps(ticket))
-filename = 'monitor'
+filename = '@monitor_status.csv'
 mime_type = 'text/csv'
-files = [ ('monitor_status.csv', (filename, open('/var/jenkins_home/workspace/NS_Checks/CitrixNitroDemo/monitor_status.csv','rb'), mime_type)) ]
+#files = [ ('monitor_status.csv', (filename, open('/var/jenkins_home/workspace/NS_Checks/CitrixNitroDemo/monitor_status.csv','rb'), mime_type)) ]
+files = [ ('monitor_status.csv', (filename, open('./monitor_status.csv','rb'), mime_type)) ]
 
 #---------------------------------------------------------------------------
 jira_url = 'https://criticaldesign.atlassian.net/rest/servicedeskapi/request'
 jheaders = {"Content-Type": "application/json"}
-aheaders = {"Content-Type": "multipart/form-data", "X-Atlassian-Token": "no-check"}
+aheaders = {"X-Atlassian-Token": "no-check"}
 #jirasm_payload = '{"serviceDeskId": "1", "requestTypeId": "16", "requestFieldValues": {"summary": "Developer Setup Load Balanced VIP via REST", "description": "These are the actions taken"}}'
 jirasm_payload = '{"serviceDeskId": "1", "requestTypeId": "16", "requestFieldValues": {"summary": "Developer Setup Load Balanced VIP via REST", "description": "STATUS"}}'
 MyString = "The Trooubleshooting task gathered this data: " 
