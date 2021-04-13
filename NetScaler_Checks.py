@@ -155,7 +155,7 @@ print(df)
 
 #--------------------------------------------------------------------------
 ticket = df.to_json(orient="split")
-print(ticket)
+print(json.dumps(ticket))
 #---------------------------------------------------------------------------
 jira_url = 'https://criticaldesign.atlassian.net/rest/servicedeskapi/request'
 headers = {"Content-Type": "application/json"}
