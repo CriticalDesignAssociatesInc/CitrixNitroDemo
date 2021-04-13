@@ -187,6 +187,7 @@ for link in jira_data['_links'] :
 tid = agent_link
 tid = tid.replace('https://criticaldesign.atlassian.net/browse/','')
 url = 'https://criticaldesign.atlassian.net/rest/api/3/issue/' + tid + '/attachments'
+print(url)
 #url = 'https://criticaldesign.atlassian.net/rest/api/3/issue/10100/attachments'
 #url = 'https://criticaldesign.atlassian.net/rest/api/2/attachments/10100'
 t = requests.post(url,auth=(JIRA_USERNAME, JIRA_PASS), files=files, headers=aheaders)
