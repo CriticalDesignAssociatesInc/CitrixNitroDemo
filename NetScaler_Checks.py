@@ -161,7 +161,7 @@ print(df)
 #print(json.dumps(ticket))
 filename = 'monitor'
 mime_type = 'text/x-csv'
-files = [ ('monitor_status.csv' (filename, open('/var/jenkins_home/workspace/NS_Checks/CitrixNitroDemo/monitor_status.csv','rb'), mime_type)) ]
+files = [ ('monitor_status.csv', (filename, open('/var/jenkins_home/workspace/NS_Checks/CitrixNitroDemo/monitor_status.csv','rb'), mime_type)) ]
 
 #---------------------------------------------------------------------------
 jira_url = 'https://criticaldesign.atlassian.net/rest/servicedeskapi/request'
