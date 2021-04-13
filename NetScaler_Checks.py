@@ -153,21 +153,24 @@ pd.set_option('display.max_columns', None)
 df = pd.read_csv('monitor_status.csv')
 print(df)
 
+#--------------------------------------------------------------------------
 ticket = df.to_json(orient="split")
+print(ticket)
+#---------------------------------------------------------------------------
 jira_url = 'https://criticaldesign.atlassian.net/rest/servicedeskapi/request'
 headers = {"Content-Type": "application/json"}
 #jirasm_payload = '{"serviceDeskId": "1", "requestTypeId": "16", "requestFieldValues": {"summary": "Developer Setup Load Balanced VIP via REST", "description": "These are the actions taken"}}'
 jirasm_payload = '{"serviceDeskId": "1", "requestTypeId": "16", "requestFieldValues": {"summary": "Developer Setup Load Balanced VIP via REST", "description": "STATUS"}}'
-MyString = "The Trooubleshooting task gathered this data: " + df
+MyString = "The Trooubleshooting task gathered this data: " 
 jirasm_payload = jirasm_payload.replace('STATUS', MyString)
-r = requests.post(jira_url, auth=(JIRA_USERNAME, JIRA_PASS), data=json.dumps(jirasm_payload), headers=headers)
+#r = requests.post(jira_url, auth=(JIRA_USERNAME, JIRA_PASS), data=json.dumps(jirasm_payload), headers=headers)
 
-print(r.status_code)
+#print(r.status_code)
 #print(r.text)
-jira_text = r.content
-jira_data = json.loads(jira_text)
-for link in jira_data['_links'] :
-    agent_link = jira_data['_links']['agent']
-    print("Jira Service Management Ticket #: " + agent_link)
+#jira_text = r.content
+#jira_data = json.loads(jira_text)
+#for link in jira_data['_links'] :
+    #agent_link = jira_data['_links']['agent']
+    #print("Jira Service Management Ticket #: " + agent_link)
     #print(agent_link)
-    exit()
+    #exit()
