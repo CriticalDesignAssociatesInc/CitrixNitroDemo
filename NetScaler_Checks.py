@@ -5,6 +5,7 @@ import csv
 import getpass
 import os
 import pandas as pd
+import string
 
 #Get a list of LB vServers, Service Group Bindings, Server Group members, 
 #Service Group Member Ports, Service Group Monitors, Service Group Monitor HTTP Requests, LB vServer Status, Backend Server Status
@@ -29,6 +30,8 @@ try:
 except Exception as error:
     print ('ERROR',error)
 
+JIRA_USERNAME=sys.argv[4]
+JIRA_PASS=sys.argv[5]
 
 #Open a .csv file and create a new line 
 with open('monitor_status.csv','w', newline='') as f:
@@ -149,3 +152,22 @@ with open('monitor_status.csv','w', newline='') as f:
 pd.set_option('display.max_columns', None)
 df = pd.read_csv('monitor_status.csv')
 print(df)
+
+
+jira_url = 'https://criticaldesign.atlassian.net/rest/servicedeskapi/request'
+headers = {"Content-Type": "application/json"}
+#jirasm_payload = '{"serviceDeskId": "1", "requestTypeId": "16", "requestFieldValues": {"summary": "Developer Setup Load Balanced VIP via REST", "description": "These are the actions taken"}}'
+jirasm_payload = '{"serviceDeskId": "1", "requestTypeId": "16", "requestFieldValues": {"summary": "Developer Setup Load Balanced VIP via REST", "description": "STATUS"}}'
+MyString = "The Trooubleshooting task gathered this data: " + df
+jirasm_payload = jirasm_payload.replace('STATUS', MyString)
+r = requests.post(jira_url, auth=(JIRA_USERNAME, JIRA_PASS), data=jirasm_payload, headers=headers)
+
+print(r.status_code)
+#print(r.text)
+jira_text = r.content
+jira_data = json.loads(jira_text)
+for link in jira_data['_links'] :
+    agent_link = jira_data['_links']['agent']
+    print("Jira Service Management Ticket #: " + agent_link)
+    #print(agent_link)
+    exit()
