@@ -167,7 +167,8 @@ files = [ ('monitor_status.csv', (filename, open('./monitor_status.csv','rb'), m
 #---------------------------------------------------------------------------
 jira_url = 'https://criticaldesign.atlassian.net/rest/servicedeskapi/request'
 jheaders = {"Content-Type": "application/json"}
-aheaders = {"X-Atlassian-Token": "no-check"}
+#aheaders = {"X-Atlassian-Token": "no-check"}
+aheaders = {"Accept": "application/json"}
 #jirasm_payload = '{"serviceDeskId": "1", "requestTypeId": "16", "requestFieldValues": {"summary": "Developer Setup Load Balanced VIP via REST", "description": "These are the actions taken"}}'
 jirasm_payload = '{"serviceDeskId": "1", "requestTypeId": "16", "requestFieldValues": {"summary": "Developer Setup Load Balanced VIP via REST", "description": "STATUS"}}'
 MyString = "The Trooubleshooting task gathered this data: " 
