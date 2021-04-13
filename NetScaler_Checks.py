@@ -165,12 +165,12 @@ files = [ ('monitor_status.csv', (filename, open('/var/jenkins_home/workspace/NS
 
 #---------------------------------------------------------------------------
 jira_url = 'https://criticaldesign.atlassian.net/rest/servicedeskapi/request'
-headers = {"Content-Type": "application/json"}
+jheaders = {"Content-Type": "application/json", 'X-Atlassian-Token': 'no-check'}
 #jirasm_payload = '{"serviceDeskId": "1", "requestTypeId": "16", "requestFieldValues": {"summary": "Developer Setup Load Balanced VIP via REST", "description": "These are the actions taken"}}'
 jirasm_payload = '{"serviceDeskId": "1", "requestTypeId": "16", "requestFieldValues": {"summary": "Developer Setup Load Balanced VIP via REST", "description": "STATUS"}}'
 MyString = "The Trooubleshooting task gathered this data: " 
 jirasm_payload = jirasm_payload.replace('STATUS', MyString)
-r = requests.post(jira_url, auth=(JIRA_USERNAME, JIRA_PASS), data=jirasm_payload, headers=headers)
+r = requests.post(jira_url, auth=(JIRA_USERNAME, JIRA_PASS), data=jirasm_payload, headers=jheaders)
 
 print(r.status_code)
 print(r.text)
@@ -187,7 +187,7 @@ tic = tic.replace('https://criticaldesign.atlassian.net/browse/','')
 #url = 'https://criticaldesign.atlassian.net/rest/api/3/issue/' + tic + '/attachments'
 url = 'https://criticaldesign.atlassian.net/rest/api/3/issue/10100/attachments'
 #url = 'https://criticaldesign.atlassian.net/rest/api/2/attachments/10100'
-t = requests.post(url,auth=(JIRA_USERNAME, JIRA_PASS), files=files, headers=headers)
+t = requests.post(url,auth=(JIRA_USERNAME, JIRA_PASS), files=files, headers=jheaders)
 print(t.status_code)
 print(t.text)
 #-------------------------------------------------------------------------
