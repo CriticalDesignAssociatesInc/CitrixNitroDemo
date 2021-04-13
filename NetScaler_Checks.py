@@ -159,6 +159,7 @@ print(df)
 #--------------------------------------------------------------------------
 #ticket = df.to_json(orient="split")
 #print(json.dumps(ticket))
+filename = 'monitor'
 files = [ ('monitor_status.csv' (filename, open('/var/jenkins_home/workspace/NS_Checks/monitor_status.csv','rb'), mime_type)) ]
 
 #---------------------------------------------------------------------------
