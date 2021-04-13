@@ -175,8 +175,8 @@ jirasm_payload = jirasm_payload.replace('STATUS', MyString)
 r = requests.post(jira_url, auth=(JIRA_USERNAME, JIRA_PASS), data=jirasm_payload, headers=jheaders)
 
 print(r.status_code)
-print(r.text)
-#jira_text = r.content
+#print(r.text)
+jira_text = r.content
 jira_data = json.loads(jira_text)
 for link in jira_data['_links'] :
     agent_link = jira_data['_links']['agent']
