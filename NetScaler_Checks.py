@@ -32,6 +32,9 @@ except Exception as error:
 
 JIRA_USERNAME=sys.argv[4]
 JIRA_PASS=sys.argv[5]
+headers = {
+'X-Atlassian-Token': 'no-check'
+}
 
 #Open a .csv file and create a new line 
 with open('monitor_status.csv','w', newline='') as f:
@@ -156,6 +159,8 @@ print(df)
 #--------------------------------------------------------------------------
 #ticket = df.to_json(orient="split")
 #print(json.dumps(ticket))
+files = [ ('monitor_status.csv' (filename, open('/var/jenkins_home/workspace/NS_Checks/monitor_status.csv','rb'), mime_type)) ]
+
 #---------------------------------------------------------------------------
 jira_url = 'https://criticaldesign.atlassian.net/rest/servicedeskapi/request'
 headers = {"Content-Type": "application/json"}
@@ -173,4 +178,12 @@ for link in jira_data['_links'] :
     agent_link = jira_data['_links']['agent']
     print("Jira Service Management Ticket #: " + agent_link)
     print(agent_link)
-    exit()
+
+    #-------------------------------------------------------------------------
+tic = str.replace('https://criticaldesign.atlassian.net/browse/')
+url = 'https://https://criticaldesign.atlassian.net/rest/api/3/issue/' + tic + '/attachments'
+t = requests.post(url,auth=JIRA_USERNAME, JIRA_PASS), files=files, headers=headers
+print(t.status_code)
+print(t.text)
+#-------------------------------------------------------------------------
+    #exit()
