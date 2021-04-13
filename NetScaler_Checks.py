@@ -166,7 +166,7 @@ files = [ ('monitor_status.csv', (filename, open('/var/jenkins_home/workspace/NS
 #---------------------------------------------------------------------------
 jira_url = 'https://criticaldesign.atlassian.net/rest/servicedeskapi/request'
 jheaders = {"Content-Type": "application/json"}
-aheaders = {'X-Atlassian-Token': 'no-check'}
+aheaders = {"Content-Type": "multipart/form-data", "X-Atlassian-Token": "no-check"}
 #jirasm_payload = '{"serviceDeskId": "1", "requestTypeId": "16", "requestFieldValues": {"summary": "Developer Setup Load Balanced VIP via REST", "description": "These are the actions taken"}}'
 jirasm_payload = '{"serviceDeskId": "1", "requestTypeId": "16", "requestFieldValues": {"summary": "Developer Setup Load Balanced VIP via REST", "description": "STATUS"}}'
 MyString = "The Trooubleshooting task gathered this data: " 
