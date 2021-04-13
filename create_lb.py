@@ -28,7 +28,7 @@ try:
 except Exception as error:
     print('ERROR', error)
 #NITRO_PWD="nsroot"
-app_name = sys.argv[4]
+
 app_port = sys.argv[5]
 lb_serviceType = sys.argv[6]
 #Use Autoselect
@@ -80,7 +80,7 @@ lb_IPadd = network_id+available_ip
 def set_random_svg(length):
     svc_characters = string.digits
     svc_name = ''.join(random.choice(svc_characters) for p in range(length))
-    svc_name = 'svg-' + svc_name
+    svc_name = svc_name
     #print(time.time())
     print(svc_name)
     return svc_name
@@ -90,15 +90,20 @@ def set_random_svg(length):
 def set_random_lbvip(length):
     lbvip_characters = string.digits
     lbvip_name = ''.join(random.choice(lbvip_characters) for p in range(length))
-    lbvip_name = 'lbvip-' + lbvip_name
+    lbvip_name = lbvip_name
     print(lbvip_name)
     return lbvip_name
 
+def set_random_app_num(length):
+    app_num_characters = string.digits
+    app_num_name = ''.join(random.choice(app_num_characters) for p in range(length))
+    print(app_num_name)
+    return app_num_name
 #set_random_lbvip(5)
 #---------------------------------------------------------------
-
-lb_name = set_random_lbvip(5)
-svg_name = set_random_svg(5)
+app_name = sys.argv[4]
+lb_name = "VS-LB-" + app_name + "-" + set_random_lbvip(5)
+svg_name = "SVG-" + app_name + "-" + set_random_svg(5)
 print(lb_IPadd)
 print(lb_name)
 print(svg_name)
