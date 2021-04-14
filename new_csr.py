@@ -174,7 +174,8 @@ if __name__ == "__main__":
     if bind_cert == "y":
         NITRO_SERVER = sys.argv[12]
         NITRO_USER = sys.argv[13]
-        vip = sys.argv[14]
+        NITRO_PASS = sys.argv[14]
+        vip = sys.argv[15]
         add_certkey()
     else:
         exit(-1)
