@@ -15,7 +15,6 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 TYPE_RSA = crypto.TYPE_RSA
 home = os.getenv("HOME")
-home = home + '/Downloads/Webinar'
 # print(home)
 now = datetime.datetime.now()
 d = now.date()
