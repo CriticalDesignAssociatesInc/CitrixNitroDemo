@@ -159,16 +159,13 @@ print(df)
 #--------------------------------------------------------------------------
 #ticket = df.to_json(orient="split")
 #print(json.dumps(ticket))
-filename = '@monitor_status.csv'
-mime_type = 'text/csv'
 #files = [ ('monitor_status.csv', (filename, open('/var/jenkins_home/workspace/NS_Checks/CitrixNitroDemo/monitor_status.csv','rb'), mime_type)) ]
-files = [ ('monitor_status.csv', (filename, open('./monitor_status.csv','rb'), mime_type)) ]
+files = { 'file': open('monitor_status.csv','rb')}
 
 #---------------------------------------------------------------------------
 jira_url = 'https://criticaldesign.atlassian.net/rest/servicedeskapi/request'
 jheaders = {"Content-Type": "application/json"}
-aheaders = {"X-Atlassian-Token": "no-check", "Accept": "application/json"}
-#aheaders = {"Accept": "application/json"}
+aheaders = {"X-Atlassian-Token": "no-check"}
 #jirasm_payload = '{"serviceDeskId": "1", "requestTypeId": "16", "requestFieldValues": {"summary": "Developer Setup Load Balanced VIP via REST", "description": "These are the actions taken"}}'
 jirasm_payload = '{"serviceDeskId": "1", "requestTypeId": "16", "requestFieldValues": {"summary": "Developer Setup Load Balanced VIP via REST", "description": "STATUS"}}'
 MyString = "The Trooubleshooting task gathered this data: " 
@@ -189,8 +186,6 @@ tid = agent_link
 tid = tid.replace('https://criticaldesign.atlassian.net/browse/','')
 url = 'https://criticaldesign.atlassian.net/rest/api/3/issue/' + tid + '/attachments'
 print(url)
-#url = 'https://criticaldesign.atlassian.net/rest/api/3/issue/10100/attachments'
-#url = 'https://criticaldesign.atlassian.net/rest/api/2/attachments/10100'
 t = requests.post(url,auth=(JIRA_USERNAME, JIRA_PASS), files=files, headers=aheaders)
 print(t.status_code)
 print(t.text)
