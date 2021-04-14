@@ -20,14 +20,14 @@ home = home + '/Downloads/Webinar'
 now = datetime.datetime.now()
 d = now.date()
 port = 22
-WIN_IP = input("Enter Certificate Authority's IP: ")
-WIN_USER = input("Enter Windows Username: ")
+WIN_IP = sys.argv[1]
+WIN_USER = sys.argv[2]
 try:
-    WIN_PWD = getpass.getpass()
+    WIN_PWD = sys.argv[3]
 except Exception as error:
     print('ERROR', error)
-hn = input("Enter Host Name: ")
-cn = input("Enter the Domain: ")
+hn = sys.argv[4]
+cn = sys.argv[5]
 sn = hn + '.' + cn
 key = crypto.PKey()
 keypath = home + "/" + hn + '-' + str(d) + '.key'
@@ -164,18 +164,18 @@ def add_certkey():
 
 if __name__ == "__main__":
     generatekey()
-    c = input('Enter your country (ex. US): ')
-    st = input('Enter your state (ex. Texas): ')
-    l = input('Enter your location (City): ')
-    o = input('Enter your organization: ')
-    ou = input('Enter yur organizational unit (ex. IT): ')
+    c = sys.argv[6]
+    st = sys.argv[7]
+    l = sys.argv[8]
+    o = sys.argv[9]
+    ou = sys.argv[10]
     generatecsr()
     reqcert()
-    bind_cert = input("Bind the cert to a vServer?(y/n): ").lower()
+    bind_cert = sys.argv[11]
     if bind_cert == "y":
-        NITRO_SERVER = input("NetScaler IP Address: ")
-        NITRO_USER = input("NetScaler User: ")
-        vip = input("Enter vServer IP Address: ")
+        NITRO_SERVER = sys.argv[12]
+        NITRO_USER = sys.argv[13]
+        vip = sys.argv[14]
         add_certkey()
     else:
         exit(-1)
