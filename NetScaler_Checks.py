@@ -188,6 +188,6 @@ url = 'https://criticaldesign.atlassian.net/rest/api/3/issue/' + tid + '/attachm
 print(url)
 t = requests.post(url,auth=(JIRA_USERNAME, JIRA_PASS), files=files, headers=aheaders)
 print(t.status_code)
-print(t.text)
+#print(t.text)
 #-------------------------------------------------------------------------
     #exit()
