@@ -101,10 +101,6 @@ def reqcert():
 
 
 def add_certkey():
-    try:
-        NITRO_PWD = getpass.getpass()
-    except Exception as error:
-        print('ERROR', error)
 
     ssh = paramiko.SSHClient()
     ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
