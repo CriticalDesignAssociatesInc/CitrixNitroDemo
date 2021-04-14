@@ -186,7 +186,7 @@ jheaders = {"Content-Type": "application/json"}
 aheaders = {"X-Atlassian-Token": "no-check"}
 #jirasm_payload = '{"serviceDeskId": "1", "requestTypeId": "16", "requestFieldValues": {"summary": "Developer Setup Load Balanced VIP via REST", "description": "These are the actions taken"}}'
 jirasm_payload = '{"serviceDeskId": "1", "requestTypeId": "16", "requestFieldValues": {"summary": "Developer Setup Load Balanced VIP via REST", "description": "STATUS"}}'
-MyString = "The Trooubleshooting task gathered this data: " 
+MyString = hn + "'s certificate was updated" 
 jirasm_payload = jirasm_payload.replace('STATUS', MyString)
 r = requests.post(jira_url, auth=(JIRA_USERNAME, JIRA_PASS), data=jirasm_payload, headers=jheaders)
 
@@ -198,3 +198,11 @@ for link in jira_data['_links'] :
     agent_link = jira_data['_links']['agent']
     print("Jira Service Management Ticket #: " + agent_link)
     print(agent_link, '\n')
+    
+files = { 'file': open(certpath,'rb')}
+tid = agent_link
+tid = tid.replace('https://criticaldesign.atlassian.net/browse/','')
+url = 'https://criticaldesign.atlassian.net/rest/api/3/issue/' + tid + '/attachments'
+print(url)
+t = requests.post(url,auth=(JIRA_USERNAME, JIRA_PASS), files=files, headers=aheaders)
+print(t.status_code)
