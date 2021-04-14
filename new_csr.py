@@ -175,3 +175,26 @@ if __name__ == "__main__":
         add_certkey()
     else:
         exit(-1)
+        
+        
+        
+JIRA_USERNAME = sys.argv[16]
+JIRA_PASS = sys.argv[17]
+
+jira_url = 'https://criticaldesign.atlassian.net/rest/servicedeskapi/request'
+jheaders = {"Content-Type": "application/json"}
+aheaders = {"X-Atlassian-Token": "no-check"}
+#jirasm_payload = '{"serviceDeskId": "1", "requestTypeId": "16", "requestFieldValues": {"summary": "Developer Setup Load Balanced VIP via REST", "description": "These are the actions taken"}}'
+jirasm_payload = '{"serviceDeskId": "1", "requestTypeId": "16", "requestFieldValues": {"summary": "Developer Setup Load Balanced VIP via REST", "description": "STATUS"}}'
+MyString = "The Trooubleshooting task gathered this data: " 
+jirasm_payload = jirasm_payload.replace('STATUS', MyString)
+r = requests.post(jira_url, auth=(JIRA_USERNAME, JIRA_PASS), data=jirasm_payload, headers=jheaders)
+
+print(r.status_code)
+#print(r.text)
+jira_text = r.content
+jira_data = json.loads(jira_text)
+for link in jira_data['_links'] :
+    agent_link = jira_data['_links']['agent']
+    print("Jira Service Management Ticket #: " + agent_link)
+    print(agent_link, '\n')
